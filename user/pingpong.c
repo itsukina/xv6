@@ -32,14 +32,12 @@ main(int argc, char *argv[]) {
 
     } else if (pid == 0) {
         // return 0 in the child
-
         char buf[1024] = {0};
         read(pipe_fd[0], buf, sizeof(buf));
         printf("%d: received ping\n", getpid());
         char *str = "pong";
         write(pipe_fd[1], str, strlen(str));
         sleep(1);
-
     }
 
     exit(0);
